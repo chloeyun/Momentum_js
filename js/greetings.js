@@ -1,7 +1,7 @@
 const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
-
+const time = document.querySelector("#clock");
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
@@ -15,7 +15,17 @@ function onLoginSubmit(event) {
 
 //Set the repetitive lines into function
 function paintGreetings(username) {
-  greeting.innerText = `Hello ${username}`;
+  const hour = new Date().getHours(); //access hour from the global window object
+  let chosenGreet;
+  if (hour >= 7 && hour < 11) {
+    chosenGreet = "Good morning,";
+  } else if (hour >= 11 && hour < 18) {
+    chosenGreet = "Good afternoon, ";
+  } else if (hour >= 18 && hour < 22) {
+    chosenGreet = "Good evening, ";
+  }
+
+  greeting.innerText = `${chosenGreet} ${username}`;
   greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
