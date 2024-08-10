@@ -1,6 +1,6 @@
 const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
-const h1 = document.querySelector("#greeting");
+const greeting = document.querySelector("#greeting");
 
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
@@ -15,8 +15,8 @@ function onLoginSubmit(event) {
 
 //Set the repetitive lines into function
 function paintGreetings(username) {
-  h1.innerText = `Hello ${username}`;
-  h1.classList.remove(HIDDEN_CLASSNAME);
+  greeting.innerText = `Hello ${username}`;
+  greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
 const savedUserName = localStorage.getItem(USERNAME_KEY);
@@ -25,7 +25,6 @@ const savedUserName = localStorage.getItem(USERNAME_KEY);
 if (savedUserName === null) {
   loginForm.addEventListener("submit", onLoginSubmit);
 }
-
 //If name alrdy exist :show the greetings
 else {
   loginForm.classList.add(HIDDEN_CLASSNAME);
