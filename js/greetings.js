@@ -2,11 +2,15 @@ const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
 const time = document.querySelector("#clock");
+const saying = document.querySelector("#quote");
+const sky = document.querySelector("#weather");
+const todo = document.querySelector("#todo-form");
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
 function onLoginSubmit(event) {
   event.preventDefault();
+  console.log("Form Submitted");
   loginForm.classList.add(HIDDEN_CLASSNAME);
   const userName = loginInput.value;
   localStorage.setItem(USERNAME_KEY, userName);
@@ -27,11 +31,18 @@ function paintGreetings(username) {
 
   greeting.innerText = `${chosenGreet} ${username}`;
   greeting.classList.remove(HIDDEN_CLASSNAME);
+  time.classList.remove(HIDDEN_CLASSNAME);
+  saying.classList.remove(HIDDEN_CLASSNAME);
+  sky.classList.remove(HIDDEN_CLASSNAME);
+  todo.classList.remove(HIDDEN_CLASSNAME);
 }
 
 const savedUserName = localStorage.getItem(USERNAME_KEY);
 
 //If name does not exist : show the form and get the item
+
+console.log(savedUserName);
+
 if (savedUserName === null) {
   loginForm.addEventListener("submit", onLoginSubmit);
 }
