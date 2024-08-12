@@ -1,6 +1,7 @@
 const todoForm = document.querySelector("#todo-form");
 const todoList = document.querySelector("#todo-list");
 const todoInput = document.querySelector("#todo-form input");
+const todoListToday = document.querySelector("#todo-form h3");
 
 //todos should store the previous values
 const TODOS_KEY = "todos";
@@ -16,7 +17,6 @@ function deleteTodo(event) {
   toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
   saveTodos(toDos);
 }
-
 function paintTodo(newTodo) {
   const li = document.createElement("li");
   li.id = newTodo.id;
@@ -26,7 +26,7 @@ function paintTodo(newTodo) {
   button.addEventListener("mousedown", deleteTodo);
   li.appendChild(button);
   li.appendChild(span);
-
+  todoListToday.classList.remove("hidden");
   todoList.appendChild(li);
 }
 
