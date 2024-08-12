@@ -1,4 +1,5 @@
-import KEY from "js/apikey.js";
+import KEY from "../js/apikey.js";
+
 const API_KEY = KEY;
 
 function onGeoOK(position) {
